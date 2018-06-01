@@ -22,7 +22,6 @@ GLfloat waterLevel = -0.4f;
 GLfloat boundary = -0.4+0.3;
 GLfloat potential = 0.0005f;
 GLfloat radius = 0.3f;
-GLfloat drown = 0.001f;
 
 
 void renderH1(std::string str, GLfloat px, GLfloat py, int r, int g, int b){
@@ -162,10 +161,18 @@ void idle(void){
 void resetDefaults(){
     z_pos = 0;
     x_pos = 0;
-    speed = 0.001f;
     falling = false;
     pin_y = -0.5f;
     pin_z = -9.0f;
+    char title[] = "3D Shapes";
+    gravity = 0.000001f;
+    speed = 0;
+    a = 0;
+    y_pos = 1.5f;
+    waterLevel = -0.4f;
+    boundary = -0.4+0.3;
+    potential = 0.0005f;
+    radius = 0.3f;
 }
 
 static void key(unsigned char key, int x, int y){
@@ -179,9 +186,6 @@ static void key(unsigned char key, int x, int y){
         if (radius > 0.2){
             radius -= 0.001;
             y_pos -=0.001;
-        }
-        else {
-            drown = true;
         }
     }
     if (key == '+') {
